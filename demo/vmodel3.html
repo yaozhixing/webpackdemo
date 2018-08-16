@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-model radio</title>
+</head>
+<body>
+	<div id="app">
+		<label for="a">
+			<input type="radio" id="a" value="jack" v-model="radiovalue" />
+			jack
+		</label>
+		<br>
+		<label for="b">
+			<input type="radio" id="b" value="jim" v-model="radiovalue" />
+			jim
+		</label>
+		<br>
+		{{radiovalue}}
+	</div>
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-model radio",
+				radiovalue: ''
+			}
+		})
+	</script>
+</body>
+</html>

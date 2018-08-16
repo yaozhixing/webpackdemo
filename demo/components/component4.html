@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>component 子---->父 this.$emit("xxx") 组件通信 </title>
+</head>
+<body>
+	<div id="app">
+		<first-comp></first-comp>
+		<div>
+			1、先定义父组件模板。Vue.component("first-comp",{...});<br>
+			2、然后在父组件模板，在定义子组件模板  components:{ 'second-comp':{...});<br>
+			3、先把父组件的data数据通过props传递给子组件里;<br>
+			   在 子组件标签上添加，尖括号 second-comp， v-on:pchangeMsg="pchangeMsgFn" v-bind:name="name";<br>
+			   在 子组件 components 上添加 props ;<br>
+			   然后引用 双大括号name; <br>
+			4、子组件事件触发，button v-on:click = "fn";<br>
+			   fn: funtion(){ this.$emit("pchangeMsg") };<br>
+			   pchangeMsg 是给父组件通信用的;<br>
+			5、子组件标签上添加通信函数，  尖括号 second-comp， v-bind:pchangeMsg ="pchangeMsgFn";<br>
+				pchangeMsgFn 这是父组件 methods 函数名;<br>
+			6、父组件添加methods方法：改变任意data值了;<br>
+				methods:{ pchangeMsgFn(){ this.name = "xxx" } };<br>
+		</div>
+	</div>
+	
+	<script src="../../node_modules/vue/dist/vue.js"></script>
+	
+	<script>
+		Vue.component("first-comp",{
+			data:function(){
+				return {
+					name:"jack",
+					number:0
+				}
+			},
+			template:`
+				<div>
+					第一个组件<br>
+					{{name}}<br>
+					<input type="text" v-model="number" /><br>
+					<second-comp v-bind:number="number" v-on:pchangeMsg="pchangeMsgFn" v-bind:name="name"></second-comp>
+				</div>
+			`,
+			methods:{
+				pchangeMsgFn:function(){
+					this.name = "danny",
+					this.number = 100
+				}
+			},
+			components:{
+				'second-comp':{
+					props:['name','number'],
+					template:`
+						<div>
+							<input type="button" v-on:click="changeMsg" value="点击我,可改变父组件的data数据" /><br>
+							<div>
+								父组件的number值：{{number}}<br>
+								第二个组件内容
+							</div>
+						</div>
+					`,
+					methods:{
+						changeMsg:function(){
+							//this就是父组件的实例
+							this.$emit("pchangeMsg")
+						}
+					}
+				}
+				
+			}
+			
+		})
+		
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</body>
+</html>

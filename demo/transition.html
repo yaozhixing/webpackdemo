@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>transition 动画过度</title>
+	<style>
+		.content{width:300px; height:300px; background-color: #FFC0CB;}
+		
+		.slide-fade-enter-active, .slide-fade-leave-active {
+			transition: all .5s ease;
+		}
+		.slide-fade-enter, .slide-fade-leave-to {
+			transform: translateX(100px);
+			opacity: 0;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input v-on:click="status =! status" type="button" value="动画型的 显示/隐藏">
+		<transition name="slide-fade">
+			<div class="content" v-if="status">
+			
+			</div>
+		</transition>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"vue 操作style样式 集合法",
+				status:true
+			},
+			
+		})
+	</script>
+</body>
+</html>

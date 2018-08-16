@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>tab 切换标签 组件使用</title>
+	<style>
+		*{margin:0; padding: 0;}
+		body{padding:160px};
+		#app{width:600px;}
+		.tabtitle{height:44px;}
+		.tabtitle a{display:inline-block; width:120px; height: 44px; line-height: 44px; cursor: pointer; text-align: center; background-color: #ccc;}
+		.tabtitle a.curr{background-color: skyblue;}
+		.tabcontent{background-color: pink; height: 300px; padding: 30px;}
+	
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="tabtitle">
+			<a v-for="tab in tabtitle" class="tab-btn" v-bind:class="{'curr': currtab === tab}" v-on:click="changeTab(tab)">{{tab}}</a>
+		</div>
+		<component v-bind:is="currTabContent"></component>
+		<div>
+			总结：<br>
+			1、先定义data: currtab 记录当前第几个，默认是第一个；<br>
+			2、循环出按钮列表；<br>
+			3、设置按钮样式 curr当前状态，绑定class名称，通过 currtab 的布尔值判断；<br>
+			4、设置按钮样式函数，点击那个按钮就将内容赋值给 currtab 按钮；<br>
+			5、控制content 样式模板选择，currTabContent 返回当前组件（标签），比如：Home = tab-Home 模板显示，字符串拼接；<br>
+		</div>
+	</div>
+	<script src="../../node_modules/vue/dist/vue.js"></script>
+	
+	<script>
+		Vue.component("tab-home",{
+			template:"<div class='tabcontent'><h2>第1个选项卡</h2></div>"
+		})
+		Vue.component("tab-new",{
+			template:"<div class='tabcontent'><h2>第2个选项卡</h2></div>"
+		})
+		Vue.component("tab-aboutus",{
+			template:"<div class='tabcontent'><h2>第3个选项卡</h2></div>"
+		})
+		
+		new Vue({
+			el:"#app",
+			data:{
+				currtab: "Home",
+				tabtitle:["Home","New","Aboutus"]
+			},
+			computed:{
+				currTabContent:function(){
+					return "tab-" + this.currtab.toLowerCase();
+				}
+			},
+			methods:{
+				changeTab:function(tab){
+					this.currtab = tab;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

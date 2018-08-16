@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-html</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<div v-html="content"></div>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-html 解析为普通文本，解析包含html代码语句",
+				content:"<div class='content' style='font-size:16px; color:red; margin-top:60px'>这是文本内容<p>打点地方大幅度打撒的撒<br><img src='' style='background:#ccc' width='200' height='200' alt='美女图片' ></p></div>"
+			}
+		})
+	</script>
+</body>
+</html>

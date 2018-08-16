@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>component 父---->子组件通信 v-for结合循环使用</title>
+</head>
+<body>
+	<div id="app">
+		<my-comp v-for="item in list" v-bind:id="item.id" v-bind:title="item.title"></my-comp>
+		<p>可拓展博文的发表列表，标题，作者，日期，内容，来源，链接，图片...</p>
+	</div>
+	
+	<script src="../../node_modules/vue/dist/vue.js"></script>
+	
+	<script>
+		Vue.component("my-comp",{
+			props:["id",'title'],
+			template:`
+				<li>{{id}}、{{title}}</li>
+			`,
+		})
+		
+		new Vue({
+			el:"#app",
+			data:{
+				title:"jack",
+				list:[
+					{
+						id:0,
+						title: "起床，刷牙漱口",
+					},
+					{
+						id:1,
+						title: "好好上班",
+					},
+					{
+						id:2,
+						title: "准时下班",
+					},
+					{
+						id:3,
+						title: "早点睡觉",
+					}
+				]
+			},
+			
+		})
+	</script>
+</body>
+</html>

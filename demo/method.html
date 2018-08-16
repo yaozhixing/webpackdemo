@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>methods 方法</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<p>{{name}}</p>
+		<input type="text" v-model="name" /><br>
+		<input v-on:click="fn" type="button" value="点我来触发把!">
+		
+		<p>语法：v-on:click 简写 @click  </p>
+		<p>v-model 数据双向绑定。语法：v-model="xx"  记住没有双大括号！</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title: "method 方法",
+				name: "Danny"
+			},
+			methods:{
+				fn: function(){
+					this.name = "hello vue.js"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

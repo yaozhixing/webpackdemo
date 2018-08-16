@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>component 基础使用</title>
+</head>
+<body>
+	<div id="app">
+		<my-comp></my-comp>
+		<my-comp></my-comp>
+		<my-comp></my-comp>
+		<div>
+			总结：<br>
+			1、首先要注册组件，Vue.component("xxx",{ 参数 });<br>
+			2、这里的xxx就是自定义标签;<br>
+			3、在页面上写入 该组件 my-comp ,标签写入;<br>
+			4、组件同样也有data,template,methods....属性;<br>
+			5、data必须是一个函数，而且是返回值;<br>
+				data:function(){
+					return{
+						num: 0,
+					}
+				},
+				<br>
+			6、组件有复用性，可重复使用改组件，而且方法和data数据互不影响；<br>
+			7、组件必须只许而且只能有一个根标签；<br>
+			
+			****、不能在组件外写入组件的data数据，有封闭的作用域<br>
+		</div>
+	</div>
+	
+	<script src="../../node_modules/vue/dist/vue.js"></script>
+	
+	<script>
+		Vue.component("my-comp",{
+			data:function(){
+				return{
+					num: 0,
+				}
+			},
+			template:`
+				<div>
+					<p>这是组件</p>
+					{{num}}
+					<br>
+					<input v-on:click="num++" type="button" value="点击我+1" />
+				</div>
+			`,
+		})
+		
+		new Vue({
+			el:"#app",
+			data:{
+				name: "jack"
+			},
+			
+		})
+	</script>
+</body>
+</html>

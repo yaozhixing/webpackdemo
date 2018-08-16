@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-for 方法二</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<ul>
+			<li v-for="(item,index) in names">
+				{{index+1}}、{{item.user}}
+			</li>
+		</ul>
+		<p>语法：v-for="(item,index) in names"  第一个属性是属性名，第二个是索引，和foreach一样</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-for 方法二",
+				names:[
+					{user:"张三"},
+					{user:"李四"},
+					{user:"王二麻子"}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

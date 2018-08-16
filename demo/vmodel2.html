@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-model 多个复选框 双向数据绑定</title>
+</head>
+<body>
+	<div id="app">
+		<label for="a">
+			<input type="checkbox" id="a" value="jack" v-model="checknames" />
+			jack
+		</label>
+		<label for="b">
+			<input type="checkbox" id="b" value="jim" v-model="checknames" />
+			jim
+		</label>
+		<label for="c">
+			<input type="checkbox" id="c" value="lucy" v-model="checknames" />
+			lucy
+		</label>
+		{{checknames}}
+	</div>
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-model 双向数据绑定",
+				checknames: []
+			}
+		})
+	</script>
+</body>
+</html>

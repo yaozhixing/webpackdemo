@@ -1,0 +1,13 @@
+html {
+  height: 100%;
+}
+html body {
+  height: 100%;
+  max-width: 750px;
+  min-width: 320px;
+  margin: 0 auto;
+  color: white;
+  font-family: "microsoft sans serif";
+}
+
+/*# sourceMappingURL=main.two.92fa7e94c5.css.map*/

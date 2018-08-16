@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-show</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<p>注意：v-if 状态为false的时候，没有该元素节点，注意和v-show false 的区别，后者 display:none 的效果（请看下面元素的style 的display值）</p>
+		<p v-show="status">你看得到我，你看不到我！</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-show 控制元素是否隐藏和显示",
+				status:false
+			}
+		})
+	</script>
+</body>
+</html>

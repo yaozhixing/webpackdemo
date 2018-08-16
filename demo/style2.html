@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vue 操作style样式 集合法</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<p></p>
+		<p v-bind:style="styleboj">style 动态添加样式集合</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"vue 操作style样式 集合法",
+				styleboj:{
+					color:'green',
+					fontWeight:"bold",
+					fontSize:'30px'
+				}
+			},
+			
+		})
+	</script>
+</body>
+</html>

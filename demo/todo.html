@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vue 操作style样式</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<div><input type="text" v-model="newtitle" placeholder="请输入今天要完成的任务"><input type="button" value="提交" v-on:click="addtodo"></div>
+		<div class="list">
+			<ul>
+				<li v-for="(item,index) in list">
+					{{index}}、{{item.title}} <input type="button" value="删除" v-bind:id="index" v-on:click="del(index)">
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"Todo 简易任务！",
+				newtitle:"",
+				list:[
+					{
+						id:1,
+						title:"起床，刷牙漱口"
+					},
+					{
+						id:2,
+						title:"好好工作，认真上班"
+					},
+					{
+						id:3,
+						title:"下班，好好睡觉"
+					}
+				],
+				newxtnumber: 4
+			},
+			methods:{
+				addtodo:function(){
+					this.list.push({
+						id: this.newxtnumber++,
+						title: this.newtitle
+					})
+					this.newtitle = ""
+				},
+				del:function(i){
+					this.list.splice(i,1);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

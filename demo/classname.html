@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-show</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<p>语法 {active: isact, right: isright}  左边是classname名，右边是data数据的布尔值</p>
+		<p v-bind:class="{active: isact, right: isright}">class name 动态添加</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-show 控制元素是否隐藏和显示",
+				isact: true,
+				isright: false
+			},
+			
+		})
+	</script>
+</body>
+</html>

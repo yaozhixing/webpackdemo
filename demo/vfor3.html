@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>v-for 方法三</title>
+</head>
+<body>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<ul>
+			<li v-for="value in names">
+				{{value}}
+			</li>
+		</ul>
+		<p>语法：v-for="value in names"  通过一个对象的属性来迭代</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"v-for 方法三 通过一个对象的属性来迭代",
+				names:{
+					firstName:"张三",
+					lastName:"李四",
+					user:"王二麻子"
+				}
+			}
+		})
+	</script>
+</body>
+</html>
